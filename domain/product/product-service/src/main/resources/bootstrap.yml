@@ -1,0 +1,46 @@
+server:
+  port: 30001
+
+spring:
+  application:
+    name: product-service
+
+  cloud:
+    config:
+      discovery:
+        service-id: config-server
+        enabled: true
+      profile: dev
+      label: master
+
+############################################################
+#
+# Eureka注册中心
+#
+############################################################
+#eureka:
+#  client:
+#    serviceUrl:
+#      defaultZone: http://192.168.126.16:20000/eureka/
+#  instance:
+#    instance-id: ${eureka.instance.ip-address}:${server.port}
+#    ip-address: 192.168.126.16
+#    prefer-ip-address: true
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:20000/eureka/
+
+## 开启所有actuator-endpoint
+management:
+  endpoint:
+    health:
+      show-details: always
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+        # include: health, info, xxx
+  security:
+    enabled: false

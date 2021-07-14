@@ -1,0 +1,75 @@
+server:
+  port: 20001
+
+spring:
+  application:
+    name: config-server
+  profiles:
+    active: jdbc
+  cloud:
+    config:
+      server:
+        default-label: dev
+        # JDBC: required configuration: datasource
+        jdbc:
+          sql: SELECT `I_KEY`, `I_VALUE` FROM PROPERTIES WHERE application =? AND profile =? AND label =?
+
+        # Git
+#        git:
+#          uri: https://github.com/benjaminwhite0927/config-repo.git
+#          force-pull: true
+#          # 将配置文件放到接入方服务名称对应文件夹下面
+#          search-paths: '{application}'
+#          username:
+#          password:
+        # 属性重载
+        overrides:
+          test: mytest
+
+  # rabbitMQ 用于Bus推送
+#  rabbitmq:
+#    host: 192.168.126.16
+#    port: 5672
+#    username: guest
+#    password: guest
+
+#####################################################################################################
+# mysql 属性配置
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://192.168.126.16:3306/config
+    username: root
+    password: root
+#####################################################################################################
+
+############################################################
+#
+# Eureka注册中心
+#
+############################################################
+#eureka:
+#  client:
+#    serviceUrl:
+#      defaultZone: http://192.168.126.16:20000/eureka/
+#  instance:
+#    instance-id: ${eureka.instance.ip-address}:${server.port}
+#    ip-address: 192.168.126.16
+#    prefer-ip-address: true
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:20000/eureka/
+
+## 开启所有actuator-endpoint
+management:
+  endpoint:
+    health:
+      show-details: always
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+        # include: health, info, xxx
+  security:
+    enabled: false
