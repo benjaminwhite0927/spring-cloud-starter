@@ -20,20 +20,20 @@ SET FOREIGN_KEY_CHECKS = 0;
 -- ----------------------------
 -- Table structure for PROPERTIES
 -- ----------------------------
-DROP TABLE IF EXISTS `PROPERTIES`;
-CREATE TABLE `PROPERTIES`  (
-  `ID` int(11) NOT NULL AUTO_INCREMENT,
-  `I_KEY` text CHARACTER SET utf8 COLLATE utf8_general_ci NULL,
-  `I_VALUE` text CHARACTER SET utf8 COLLATE utf8_general_ci NULL,
-  `APPLICATION` text CHARACTER SET utf8 COLLATE utf8_general_ci NULL,
-  `PROFILE` text CHARACTER SET utf8 COLLATE utf8_general_ci NULL,
-  `LABEL` text CHARACTER SET utf8 COLLATE utf8_general_ci NULL,
-  PRIMARY KEY (`ID`) USING BTREE
+DROP TABLE IF EXISTS `configurations`;
+CREATE TABLE `configurations`  (
+  `i_id` int(11) NOT NULL AUTO_INCREMENT,
+  `i_key` text CHARACTER SET utf8 COLLATE utf8_general_ci NULL,
+  `i_value` text CHARACTER SET utf8 COLLATE utf8_general_ci NULL,
+  `i_application` text CHARACTER SET utf8 COLLATE utf8_general_ci NULL,
+  `i_profile` text CHARACTER SET utf8 COLLATE utf8_general_ci NULL,
+  `i_label` text CHARACTER SET utf8 COLLATE utf8_general_ci NULL,
+  PRIMARY KEY (`i_id`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of PROPERTIES
 -- ----------------------------
-INSERT INTO `PROPERTIES` VALUES (1, 'item_url', 'localhost', 'product-service', 'dev', 'master');
+INSERT INTO `configurations` VALUES (1, 'item_url', 'localhost', 'product-service', 'dev', 'master');
 
 SET FOREIGN_KEY_CHECKS = 1;

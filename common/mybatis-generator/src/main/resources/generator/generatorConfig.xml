@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+<generatorConfiguration>
+    <context id="MysqlContext" targetRuntime="MyBatis3Simple" defaultModelType="flat">
+        <property name="beginningDelimiter" value="`"/>
+        <property name="endingDelimiter" value="`"/>
+
+        <plugin type="org.mybatis.generator.plugins.ToStringPlugin" />
+        <plugin type="org.mybatis.generator.plugins.SerializablePlugin" />
+
+        <!-- 通用mapper所在目录 -->
+        <plugin type="tk.mybatis.mapper.generator.MapperPlugin">
+            <property name="mappers" value="org.benjamin.my.mapper.MyMapper"/>
+        </plugin>
+
+        <jdbcConnection driverClass="com.mysql.jdbc.Driver"
+                        connectionURL="jdbc:mysql://192.168.126.16:3306/config"
+                        userId="root"
+                        password="root">
+        </jdbcConnection>
+
+        <!-- 对应生成的pojo所在包 -->
+        <javaModelGenerator targetPackage="org.benjamin.config.pojo" targetProject="domain/configuration/config-pojo/src/main/java"/>
+
+        <!-- 对应生成的mapper所在目录 -->
+        <sqlMapGenerator targetPackage="mapper" targetProject="domain/configuration/config-mapper/src/main/resources"/>
+
+        <!-- 配置mapper对应的java映射 -->
+        <javaClientGenerator targetPackage="org.benjamin.config.mapper" targetProject="domain/configuration/config-mapper/src/main/java" type="XMLMAPPER"/>
+
+
+        <!-- 数据库表 -->
+        <!--        <table tableName="student"></table>-->
+        <table tableName="configurations" domainObjectName="Configuration">
+            <generatedKey column="i_id" sqlStatement="Mysql" identity="true" />
+            <columnRenamingRule searchString="^i_" replaceString="" />
+        </table>
+
+    </context>
+</generatorConfiguration>

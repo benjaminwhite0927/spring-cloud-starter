@@ -12,7 +12,7 @@ spring:
         default-label: dev
         # JDBC: required configuration: datasource
         jdbc:
-          sql: SELECT `I_KEY`, `I_VALUE` FROM PROPERTIES WHERE application =? AND profile =? AND label =?
+          sql: select `i_key`, `i_value` FROM configurations WHERE i_application =? AND i_profile =? AND i_label =?
 
         # Git
 #        git:

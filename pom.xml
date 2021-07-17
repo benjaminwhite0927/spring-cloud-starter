@@ -14,6 +14,12 @@
         <module>domain/product/product-pojo</module>
         <module>domain/product/product-api</module>
         <module>domain/product/product-service</module>
+        <module>common/mybatis-generator</module>
+        <module>domain/configuration/config-pojo</module>
+        <module>domain/configuration/config-mapper</module>
+        <module>common/cloud-common</module>
+        <module>domain/configuration/config-api</module>
+        <module>domain/configuration/config-service</module>
     </modules>
 
     <properties>
